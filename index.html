@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kleiderspende - SpendenVerein</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo d-flex justify-content-center">
+            <a href="index.html" class="text-decoration-none">
+                <img src="logo.png" alt="Logo Kleiderspende - SpendenVerein">
+            </a>
+        </div>
+        <nav>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#">Startseite</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#">Über uns</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container my-5">
+        <h1>Kleiderspende registrieren</h1>
+        <p class="lead">
+            Entscheiden Sie selbst, in welche aktuelle Krisenregion Ihre Spende gesendet werden soll.
+        </p>
+
+        <hr class="my-4">
+
+        <section id="registrierung" class="card p-4 shadow-sm">
+            <form id="spendenForm">
+                
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Wie möchten Sie spenden?</label>
+                    <select class="form-select" id="uebergabeArt">
+                        <option value="abholung">Abholung durch Sammelfahrzeug</option>
+                        <option value="geschaeftsstelle">Übergabe an der Geschäftsstelle</option>
+                    </select>
+                </div>
+
+                <div id="adresseBereich" class="mb-3">
+                    <label class="form-label">Abholadresse</label>
+                    <div class="row g-2 mb-2">
+                        <div class="col-8">
+                            <input type="text" id="strasseInput" class="form-control" placeholder="Straße">
+                        </div>
+                        <div class="col-4">
+                            <input type="text" id="hausnummerInput" class="form-control" placeholder="Nr.">
+                        </div>
+                    </div>
+                    <input 
+                        type="text" 
+                        id="plzInput" 
+                        class="form-control" 
+                        placeholder="PLZ (z.B. 12345)" 
+                        minlength="5" 
+                        maxlength="5" 
+                        pattern="[0-9]{5}">
+                    <small class="text-muted">
+                        Hinweis: Die ersten beiden Ziffern der PLZ müssen mit '12' beginnen.
+                    </small>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Art der Kleidung</label>
+                    <input 
+                        type="text" 
+                        id="kleidungArt" 
+                        class="form-control" 
+                        placeholder="z.B. Winterjacken" 
+                        required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Krisengebiet</label>
+                    <select class="form-select" id="krisengebiet" required>
+                        <option value="" disabled selected>Bitte wählen...</option>
+                        <option value="Region Nord">Region Nord</option>
+                        <option value="Region Süd">Region Süd</option>
+                        <option value="Krisengebiet West">Krisengebiet West</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">
+                    Spende registrieren
+                </button>
+            </form>
+
+            <div id="bestaetigung" class="mt-4 alert alert-success d-none"></div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <nav>
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <a class="text-white text-decoration-none" href="#">Datenschutz</a>
+                    </li>
+                    <li class="list-inline-item">|</li>
+                    <li class="list-inline-item">
+                        <a class="text-white text-decoration-none" href="#">Impressum</a>
+                    </li>
+                </ul>
+            </nav>
+            <p class="mb-0 mt-2">&copy; 2026 Kleiderspende</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
