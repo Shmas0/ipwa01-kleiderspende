@@ -39,9 +39,13 @@ function registrieren(event) {
     const bestaetigung = document.getElementById('bestaetigung');
     const formular = document.getElementById('spendenForm');
 
-    // PLZ-Prüfung bei Abholung
-    if (art === 'abholung' && !plz.startsWith('12')) {
-        alert("Abholung ist logistisch nur möglich, wenn die Postleitzahl mit '12' beginnt.");
+    // PLZ-Prüfung bei Abholung (Vergleich der ersten zwei Ziffern)
+    const referenzPlz = '12345'; // Annahme: Offizielle PLZ der Geschäftsstelle
+    const referenzPrefix = referenzPlz.substring(0, 2);
+    const eingabePrefix = plz.substring(0, 2);
+
+    if (art === 'abholung' && eingabePrefix !== referenzPrefix) {
+        alert(`Abholung ist logistisch nur im selben Leitgebiet möglich (PLZ muss mit '${referenzPrefix}' beginnen).`);
         return;
     }
 
@@ -53,7 +57,7 @@ function registrieren(event) {
     const ort = (art === 'abholung') ? `${strasse} ${hausnummer}, ${plz}` : "Übergabe an der Geschäftsstelle";
 
     // Bestätigungsmeldung sicher im DOM aufbauen (ohne innerHTML wegen XSS)
-    bestaetigung.innerHTML = '';
+    bestaetigung.textContent = '';
     bestaetigung.classList.remove('d-none');
 
     const ueberschrift = document.createElement('h5');
